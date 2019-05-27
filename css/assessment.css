@@ -1,0 +1,56 @@
+/* Assessment UI styles */
+
+#assessmentTitle {
+  font-size: 24pt;
+}
+.sectionContainer {
+  position: relative;
+  border: 2px #cccccc;
+  box-shadow: #888888 -3px 3px 5px;
+  padding: 2rem;
+  margin: 50px;
+}
+
+a#deleteSection {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+div.assessmentSection > div {
+  margin: 2rem 0px;
+}
+
+div.sectionText > textarea {
+  border: 1px solid #ccc;
+  min-width: 90%;
+  margin: 20px 0px 5px 0px;
+}
+
+.rubricText {
+  border-radius: 5px;
+  border-width: 1px 1px 1px 8px;
+  border-style: solid;
+  border-color: #cccccc;
+
+  margin: 20px 0px;
+  padding: 5px;
+  display: block;
+  max-width: 100%;
+  min-width: 90%;
+}
+
+.rubricFail {
+  border-left-color: red;
+}
+.rubricApproachingCompetence {
+  border-left-color: yellow;
+}
+.rubricCompetent {
+  border-left-color: green;
+}
+
+a.button.add {
+  display: block;
+  float: right;
+}

@@ -1,0 +1,149 @@
+/* Dashboard UI styles */
+
+/* Top bar */
+div#topBar {
+  display: none; /* default: hidden */
+  width: 100%;
+}
+div#userContainer {
+  float: right;
+  margin-right: 35px;
+} div#userContainer:hover {
+    cursor: pointer;
+  }
+img#userImage {
+  max-width: 64px;
+  max-height: 64px;
+}
+
+/* Side bar */
+nav#menuBar {
+  float: left;
+  width: 20%;
+  border: 1px solid #aaa;
+  background-color: #ccc;
+  position: fixed;
+  height: 100%;
+}
+div#schoolDataContainer {
+  padding: 25px;
+  margin:20px 0px;
+}
+  #schoolDataContainer > * {
+    margin: 15px;
+  }
+  img#schoolLogo {
+    max-width: 5rem;
+  }
+  div#schoolData > * {
+    margin: 0;
+  }
+  a#editSchool {
+    text-orientation: sideways;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgb(142,170,219);
+    padding: 10px;
+
+  }
+  ul#mainMenu {
+    list-style: none;
+    padding: 0;
+  }
+    #mainMenu li {
+      padding: 15px;
+      font-weight: bold;
+      display: block;
+      color: #222222;
+    } #mainMenu li:hover {
+        background-color: #eee;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px -1px 2px 0px;
+        cursor: pointer;
+      }
+      #mainMenu li.selected {
+        background-color: #efefef;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px -1px 2px 0px;
+      }
+      img.menu_icon {
+        max-width: 24px;
+        max-height: 24px;
+      }
+
+div.listContainer {
+  border: none;
+}
+table.dataTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 25px 0px;
+}
+  table.dataTable tr:nth-child(even) {
+    background-color: #cccccc;
+  }
+  table.dataTable tr:hover {
+    cursor: pointer;
+    background-color: #888888;
+  }
+  table.dataTable td {
+    padding: 10px;
+  }
+  table.dataTable td:nth-child(even) {
+    background-color: rgba(142,170,219,0.3);
+  }
+
+a.add {
+  font-size: 12pt;
+  float: right;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+}
+tr.data-row {
+  width: 100% !important;
+  display: table-row;
+}
+  tr.data-row td {
+    padding: 15px;
+    color: #666;
+    border-bottom:  1px solid #f2f2f2;
+  }
+  tr.data-row:hover {
+    background-color: #b3d4fc;
+    cursor: pointer;
+  }
+/* Media queries - device specific styles */
+/*
+@media only screen and (min-width: 960px) {
+  div#userContainer {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    background-color: white;
+    padding: 20px;
+  } div#userContainer:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+    cursor: pointer;
+  }
+}
+*/
+/*
+@media only screen and (min-width: 960px) {
+  div#userContainer {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    background-color: white;
+    padding: 20px;
+  } div#userContainer:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+    cursor: pointer;
+  }
+}
+*/

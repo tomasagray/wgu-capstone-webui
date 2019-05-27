@@ -1,0 +1,55 @@
+<div ng-controller="editCourseCtrl" id="courseContainer">
+  <h1>{{ course.title }}</h1>
+
+  <div id="courseNumberContainer">
+    <label for="courseNumber" style="display: block;">Course Number:</label>
+<!--    <select name="prefix" id="prefix">
+      <option></option>
+      <option id="addPrefixButton">Add...</option>
+    </select>-->
+    <input name="courseNumber" type="text" id="courseNumber" placeholder="xxx"  ng-model="course.courseNumber"/>
+  </div>
+
+  <div>
+    <label for="creditSlider">Credits:</label>
+    <p id="creditOutput" ng-bind="course.credits"></p>
+
+    <div id="creditSlider"></div>
+  </div>
+
+  <h2>Assessments:</h2>
+
+  <div id="assessmentList">
+    <ul id="assessments" class="tileList">
+      <li class="assessmentTile">
+        <h3 class="tileTitle">Assessment Title</h3>
+        <p class="tileText">Assessment text.</p>
+      </li>
+    </ul>
+
+    <a href="#!add_assessment" class="button add">Add...</a>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    // Setup UI elements
+
+
+    // Course prefix
+    $("#prefix").selectmenu();
+
+    // Credits slider
+    const $creditMap = [3,4,5,6];
+    let $credits = 0;
+    $("#creditSlider").slider({
+      max: $creditMap.length -1,
+      slide: function (event, ui) {
+        $credits = $creditMap[ui.value];
+        $("#creditOutput").text( $credits );
+        console.log("Credits: " + $credits);
+      }
+    });
+  })
+</script>

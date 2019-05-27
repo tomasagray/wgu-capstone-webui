@@ -1,0 +1,28 @@
+/* Course-related UI styles */
+
+div#courseContainer label{
+  font-size: 14pt;
+  font-weight: bold;
+
+}
+div#courseContainer p {
+  display: inline;
+}
+div#courseContainer > div {
+  margin: 25px 0px;
+}
+#prefix-button {
+  max-width: 4rem;
+}
+option#addPrefixButton {
+  background-color: rgb(142,170,219);
+}
+
+#creditSlider {
+  margin: 15px 0px;
+}
+#creditOutput {
+  margin: 0px 10px;
+  padding: 5px;
+  border: 1px solid black;
+}

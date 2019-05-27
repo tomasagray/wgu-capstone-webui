@@ -1,0 +1,34 @@
+<div ng-controller="editAssessmentController">
+  <input type="text" id="assessmentTitle" class="editableTitle" ng-bind="assessmentTitle" placeholder="Assessment Title">
+
+  <div class="sectionContainer">
+    <label for="assessmentType">Type:</label>
+    <select name="assessmentType" id="assessmentType">
+      <option></option>
+    </select>
+  </div>
+
+  <div class="sectionContainer">
+    <div class="assessmentSection">
+      <a href="#!delete_section" id="deleteSection">X</a>
+
+      <div class="sectionText">
+        <input type="text" class="editableTitle" placeholder="Section title..." />
+        <textarea placeholder="Section text..." rows="4" cols="50"></textarea>
+        <a href="#!upload_section_text" class="button small">Upload...</a>
+      </div>
+
+      <div>
+        <textarea class="rubricText rubricFail" placeholder="Text for inadequate level..."></textarea>
+        <textarea class="rubricText rubricApproachingCompetence" placeholder="Text for approaching competence level..."></textarea>
+        <textarea class="rubricText rubricCompetent" placeholder="Text for competent level..."></textarea>
+      </div>
+
+    </div>
+
+    <a href="#!add_section" class="button add">Add...</a>
+    <div style="clear: both">
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,118 @@
+/* Default site styles  */
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e8eaed;
+  font-family: Poppins-Regular, Roboto, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type="text"] {
+  padding: 5px;
+}
+
+label {
+  font-size: 14pt;
+  font-weight: 400;
+}
+
+/* Main UI components */
+header#topBar {
+  background-color: #1f3864;
+  height: 5em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+  h1#dashTitle {
+    float: left;
+    font-size: 36pt;
+    font-weight: bolder;
+    color: whitesmoke;
+    margin: 0 15px;
+  }
+
+section#bodyContainer {
+  margin-top: 5em;
+}
+
+section#content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  float: right;
+  width: 80%;
+}
+div.centerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.page {
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+  padding: 25px;
+  margin: 25px;
+}
+
+a.button {
+  border-radius: 20px;
+  border: none;
+  background: rgb(142,170,219);
+  padding: 15px 55px;
+  box-shadow: none;
+
+  color: white;
+  font-size: 14pt;
+  font-weight: bolder;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+  a.button.small {
+    font-size: 12pt;
+    padding: 10px 25px;
+  }
+
+
+input[type="text"].editableTitle {
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: black;
+  padding: 5px;
+
+  display: block;
+  min-width: 90%;
+
+  font-size: 18pt;
+}
+
+ul.tileList {
+  list-style: none;
+  padding: 0;
+}
+  li.assessmentTile {
+    display: block;
+    padding: 10px;
+    border-width: 0 0 0 20px;
+    border-style: solid;
+    border-left-color: #1f3864;
+    box-shadow: #888888 -1px 1px 2px;
+  }
+    h3.tileTitle {
+      margin: 5px 0;
+    }
+    p.tileText {
+      margin-left: 1em;
+      color: #888888;
+      font-style: italic;
+    }
+
+

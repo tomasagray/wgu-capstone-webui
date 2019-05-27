@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to the University of Hardt-Knox</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <!--  Scripts -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+
+  <!-- Stylesheets  -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/boilerplate.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/assessment.css">
+  <link rel="stylesheet" href="css/course.css">
+
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body ng-app="uhnApp">
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+      Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <header id="topBar">
+    <h1 id="dashTitle">Admin Dashboard</h1>
+
+    <div id="userContainer">
+      <img src="img/user.png" id="userImage" />
+    </div>
+  </header>
+
+  <section id="bodyContainer">
+    <div ng-controller="dashboardCtrl">
+      <nav id="menuBar">
+        <div id="schoolDataContainer">
+          <img src="img/emblem.png" alt="University Emblem" id="schoolLogo" />
+
+          <div id="schoolData">
+            <h3 ng-bind="schoolTitle">Placeholder</h3>
+            <p ng-bind="schoolAddress1">Placeholder</p>
+            <p ng-bind="schoolAddress2">Placeholder</p>
+          </div>
+
+          <a href="#!edit_school" id="editSchool">Edit</a>
+        </div>
+
+        <div id="mainMenuContainer">
+          <ul id="mainMenu">
+            <li ng-click="menuClick('students')"><img alt="Students" class="menu_icon" src="img/students_dash.svg"/> Students</li>
+            <li ng-click="menuClick('courses')"><img alt="Courses" class="menu_icon" src="img/courses_dash.svg"/> Courses</li>
+            <li ng-click="menuClick('assessments')"><img alt="Assessments" class="menu_icon" src="img/assessments_dash.svg"/> Assessments</li>
+            <li ng-click="menuClick('faculty')"><img alt="Faculty" class="menu_icon" src="img/faculty_dash.svg"/> Faculty</li>
+            <li ng-click="menuClick('reports')"><img alt="Reports" class="menu_icon" src="img/reports_dash.svg"/> Reports</li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
+    <section id="content">
+      <div class="centerContainer page" ng-view>
+        <p>Placeholder text.</p>
+      </div>
+    </section>
+  </section>
+</body>
+
+<script >
+  const ang_app = angular.module("uhnApp", ["ngRoute"])
+    .service("data", function data() {
+      let data = this;
+      data.message = "Default message";
+    });
+</script>
+<script src="js/rest.js"></script>
+<script src="js/routing.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/students.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/assessments.js"></script>
+
+</html>

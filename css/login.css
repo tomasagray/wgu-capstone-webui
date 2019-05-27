@@ -1,0 +1,47 @@
+/* Login */
+div.loginContainer {
+  text-align: center;
+}
+p#loginWarning {
+  /*text-align: left;*/
+  font-size: 10pt;
+}
+form.loginForm {
+  display: grid;
+  margin: 25px;
+}
+  form.loginForm > input[type="text"],
+  form.loginForm > input[type="password"] {
+    display: block;
+    border-radius: 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+    min-width: 200px;
+    background: whitesmoke;
+    border: none;
+    margin: 15px;
+    padding: 15px;
+  }
+input[type="checkbox"]#keep {
+  margin-left: 25px;
+}
+label.login {
+  font-size: 10pt;
+}
+label#keepLabel:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+p#errorText {
+  text-align: center;
+  padding: 15px 10px;
+  margin-top: 45px;
+  border-radius: 10px;
+  width: 0px;
+  white-space: nowrap;
+
+  color: whitesmoke;
+  font-size: 10pt;
+  font-style: italic;
+}
+
+

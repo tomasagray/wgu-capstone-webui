@@ -1,0 +1,80 @@
+
+<div ng-app="login" class="loginContainer">
+  <h1>Sign in to
+    <img src="img/logo_main.png" width="175" alt="Welcome to the University of Hardt Knox" />
+  </h1>
+
+  <p id="loginWarning">
+    Never enter your password on a device that you do not fully trust.<br/>
+    Do not log into your account from a shared or public computer.
+  </p>
+
+  <img src="img/user.png" width="100" style="margin: 15px" />
+
+  <form name="loginForm" class="loginForm">
+    <input type="text" class="login" id="username" name="username" placeholder="Username..." autocomplete="section-login username">
+    <input type="password" class="login" id="password" name="password" placeholder="Password..." autocomplete="section-login current-password">
+    <div>
+      <input type="checkbox" class="login" id="keep" name="keep">
+      <label for="keep" class="login" id="keepLabel">Keep me logged in</label>
+    </div>
+  </form>
+
+  <a href="#!dashboard" id="submit" class="button">Login</a>
+
+  <div class="centerContainer">
+    <p id="errorText"></p>
+  </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#submit').click(function() {
+      // Validate login form
+      if(validateLoginForm()) {
+        console.log("Login successful...");
+      }
+    });
+  });
+
+  function validateLoginForm() {
+    const $username = $("#username").val();
+    const $password = $("#password").val();
+    const $keep = $("#keep").prop("checked");
+
+    // Validate username
+    if($username == "" || $username.match(/[!@#$%^&*()-_=+]/g) != null) {
+      showLoginError("Please enter a valid username");
+      console.log($username + ": username invalid");
+      return false;
+    }
+
+    // Validate password
+    if($password == "" || $password.length < 4 || $password.length > 32) {
+      showLoginError("Please enter a valid password");
+      console.log($password + ": password invalid");
+      return false;
+    }
+
+    // We made it! Form validated
+    return true;
+  }
+  function showLoginError($msg) {
+    $('#errorText')
+      .text($msg)
+      .animate({
+        backgroundColor: "#aa0000",
+        width: 250
+      }, 500)
+      .delay(5000)
+      .animate({
+        backgroundColor: "transparent",
+        width: 0
+      }, 1000, function() {
+        $(this).text(""); // reset to empty
+      });
+  }
+</script>

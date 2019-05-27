@@ -1,0 +1,25 @@
+<table id="courses" ng-app="uhnApp" ng-controller="coursesCtrl">
+  <thead>
+    <tr>
+      <th>Course ID</th>
+      <th>Title</th>
+      <th>Number</th>
+      <th>Credits</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr class="data-row" ng-repeat="x in courses" ng-click="openFragment('/edit_course', x.course_id)">
+      <td> {{ x.course_id }} </td>
+      <td> {{ x.title }} </td>
+      <td> {{ x.courseNumber }} </td>
+      <td> {{ x.credits }} </td>
+      <td> {{ x.startDate }} </td>
+      <td> {{ x.endDate }} </td>
+      <td> {{ x.status }} </td>
+    </tr>
+  </tbody>
+</table>
