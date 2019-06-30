@@ -1,0 +1,29 @@
+<style>
+  h3.reportHeading {
+    background-color: whitesmoke;
+    padding: 15px;
+    margin: 1.2em;
+  }
+</style>
+<div ng-controller="reportsCtrl">
+  <h1>Reports</h1>
+
+  <div id="studentReportContainer">
+    <h2 class="subHeading">Student reports</h2>
+
+    <h3 class="reportHeading">Course status distribution</h3>
+    <div class="chartContainer">
+      <canvas id="courseStatus"></canvas>
+    </div>
+
+    <h3 class="reportHeading">Enrollments per month</h3>
+    <div class="chartContainer">
+      <canvas id="enrollmentChart"></canvas>
+    </div>
+
+    <h3 class="reportHeading">Students per course</h3>
+    <div class="chartContainer">
+      <canvas id="studentsCourse"></canvas>
+    </div>
+  </div>
+</div>

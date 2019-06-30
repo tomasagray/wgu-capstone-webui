@@ -1,28 +1,56 @@
 /* Course-related UI styles */
 
-div#courseContainer label{
+div#courseContainer label {
   font-size: 14pt;
   font-weight: bold;
-
 }
-div#courseContainer p {
+div#courseContainer {
+  width: 100%;
+}
+p#creditOutput {
   display: inline;
 }
 div#courseContainer > div {
-  margin: 25px 0px;
+  margin: 25px 0;
 }
-#prefix-button {
-  max-width: 4rem;
-}
-option#addPrefixButton {
-  background-color: rgb(142,170,219);
+
+#courseTitle {
+  font-size: 2em;
+  border-color: black;
+  border-style: solid;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 2px;
+  width: 100%;
 }
 
 #creditSlider {
-  margin: 15px 0px;
+  margin: 15px 0;
+  width: 50%;
 }
 #creditOutput {
-  margin: 0px 10px;
+  margin: 0 10px;
   padding: 5px;
   border: 1px solid black;
+  font-size: 24pt;
+  vertical-align: middle;
+}
+
+
+#assessmentDialogList ul {
+  list-style: none;
+  padding: 0;
+}
+#assessmentDialogList ul > li {
+  padding: 10px;
+}
+#assessmentDialogList ul > li:nth-child(even) {
+  background-color: #e8eaed;
+}
+
+p.centeredText {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 }

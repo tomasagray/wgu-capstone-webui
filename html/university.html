@@ -1,0 +1,140 @@
+<div ng-controller="universityCtrl">
+  <div id="masthead" style="text-align: center">
+    <img src="img/emblem.png" alt="University emblem" width="240" />
+    <h1>University of Hardt-Knox</h1>
+  </div>
+
+  <div id="addressContainer">
+    <h2 class="subHeading">Campus Address</h2>
+
+    <ul class="niceList">
+      <li>
+        <label for="address1" class="required">Address:</label>
+        <input ng-model="address1" type="text" id="address1" placeholder="Enter street address">
+        <br/>
+        <input ng-model="address2" type="text" id="address2" placeholder="Additional address info (optional)">
+      </li>
+      <li>
+        <label for="city" class="required">City:</label>
+        <input ng-model="city" type="text" id="city" placeholder="Enter city name">
+      </li>
+      <li>
+        <label for="state" class="required">State:</label>
+        <input ng-model="state" type="text" id="state" placeholder="Enter state name">
+      </li>
+      <li>
+        <label for="post_code" class="required">Post Code:</label>
+        <input ng-model="post_code" type="text" id="post_code"  placeholder="Enter post code"/>
+      </li>
+    </ul>
+
+    <!--  Save button  -->
+    <div style="text-align: center; margin: 2em;">
+      <button ng-click="handleUpdateAddress()" class="saveButton">
+        Update
+        <img src="img/save.svg" alt="Update" />
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="subHeading">
+      Institutional Documents
+      <button class="smallAddButton" ng-click="handleAddDocument()">+</button>
+    </h2>
+
+    <table class="niceList">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th style="width: 100%; text-align: left;">Title</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="doc in documents">
+          <td>{{ doc.uploaded | usDateFormat }}</td>
+          <td>
+            <h4>{{ doc.title }}</h4>
+            <p>{{ doc.description }}</p>
+          </td>
+          <td>
+            <div style="width: 150px; overflow:hidden; -ms-text-overflow: ellipsis;text-overflow: ellipsis; white-space: nowrap;">
+              {{ doc.file_type }}
+            </div>
+          </td>
+          <td>{{ doc.file_size | fileSize }}</td>
+          <td>
+            <span ng-click="handleDeleteDoc( doc.document_id )" class="delete_row">x</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p ng-if="documents == undefined">No documents found on server.</p>
+  </div>
+
+  <div id="confirmModal" style="display: none;">
+    <p>Are you sure you would like to <strong>permanently delete this file from the filesystem</strong>? </p>
+  </div>
+
+  <div id="uploadModal" style="display: none;">
+    <p>Please select a document to upload <i>(*.doc, *.docx, *.pdf, *.txt)</i> <br/>
+    Maximum file size: <strong>500kB</strong> </p>
+
+    <form id="documentUpload" enctype="multipart/form-data">
+      <label for="documentTitle">Title</label>
+      <input
+        type="text"
+        id="documentTitle"
+        name="documentTitle"
+        ng-model="docTitle"
+        placeholder="Title of the document" />
+
+      <label for="documentDescription">Description</label>
+      <textarea
+        id="documentDescription"
+        placeholder="Description of this document"
+        name="documentDescription"
+        ng-model="docDescription"
+        rows="4">
+      </textarea>
+
+      <br/>
+      <input
+        uhn-file-model="docFile"
+        type="file"
+        id="documentFile"
+        class="inputFile"
+        name="documentFile"
+        accept=".doc,.docx,.pdf,.txt" />
+      <label for="documentFile">
+        <img src="img/upload.svg" alt="Upload" width="24"/>
+        <span style="vertical-align: middle;">Choose a file...</span>
+      </label>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.getElementById('documentFile').addEventListener( 'change', function( e )
+  {
+    let fileName = '';
+    let label	 = this.nextElementSibling,
+      labelVal = label.innerHTML;
+    if( this.files && this.files.length > 1 ) {
+      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' );
+      fileName = fileName.replace( '{count}', this.files.length );
+    } else {
+      fileName = e.target.value.split( '\\' ).pop();
+    }
+
+    if( fileName )
+      label.querySelector( 'span' ).innerHTML = fileName;
+    else
+      label.innerHTML = labelVal;
+  });
+</script>

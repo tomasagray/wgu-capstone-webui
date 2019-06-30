@@ -1,34 +1,46 @@
-<div ng-controller="editAssessmentController">
-  <input type="text" id="assessmentTitle" class="editableTitle" ng-bind="assessmentTitle" placeholder="Assessment Title">
+<div ng-controller="editAssessmentCtrl">
+  <input type="text" id="assessmentTitle" class="editableTitle" ng-model="assessment.title" placeholder="Assessment Title">
 
-  <div class="sectionContainer">
+  <div class="assessmentSection">
     <label for="assessmentType">Type:</label>
-    <select name="assessmentType" id="assessmentType">
-      <option></option>
+    <select name="assessmentType" id="assessmentType" ng-init="assessment.type" ng-model="assessment.type">
+      <option value="performance">PERFORMANCE</option>
+      <option value="objective">OBJECTIVE</option>
     </select>
   </div>
 
+  <h2 class="subHeading">
+    Rubric Items
+    <button class="smallAddButton" ng-click="handleAddItem()">+</button>
+  </h2>
+
   <div class="sectionContainer">
-    <div class="assessmentSection">
-      <a href="#!delete_section" id="deleteSection">X</a>
+    <div class="assessmentSection" ng-repeat="x in assessment.items">
+      <span ng-click="handleDeleteItem($index)" class="delete_row" style="float: right;">x</span>
+      <br style="clear:both;"/>
 
       <div class="sectionText">
-        <input type="text" class="editableTitle" placeholder="Section title..." />
-        <textarea placeholder="Section text..." rows="4" cols="50"></textarea>
-        <a href="#!upload_section_text" class="button small">Upload...</a>
+        <input type="text" class="editableTitle" ng-model="x.title" placeholder="Section title..." />
+        <textarea ng-model="x.description" placeholder="Section text..." rows="4" cols="50"></textarea>
       </div>
 
       <div>
-        <textarea class="rubricText rubricFail" placeholder="Text for inadequate level..."></textarea>
-        <textarea class="rubricText rubricApproachingCompetence" placeholder="Text for approaching competence level..."></textarea>
-        <textarea class="rubricText rubricCompetent" placeholder="Text for competent level..."></textarea>
+        <textarea ng-model="x.rubric.competent" class="rubricText rubricCompetent" placeholder="Text for competent level..."></textarea>
+        <textarea ng-model="x.rubric.semi_competent" class="rubricText rubricApproachingCompetence" placeholder="Text for approaching competence level..."></textarea>
+        <textarea ng-model="x.rubric.incompetent" class="rubricText rubricFail" placeholder="Text for inadequate level..."></textarea>
       </div>
 
     </div>
+  </div>
 
-    <a href="#!add_section" class="button add">Add...</a>
-    <div style="clear: both">
+  <div>
+
+    <!--  Save button  -->
+    <div style="text-align: center; margin: 2em;">
+      <button ng-click="handleSaveAssessment()" class="saveButton">
+        Save
+        <img src="img/save.svg" alt="Save" />
+      </button>
     </div>
-
   </div>
 </div>

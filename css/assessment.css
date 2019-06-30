@@ -1,9 +1,12 @@
 /* Assessment UI styles */
-
+#assessmentList span.delete_row {
+  float: right;
+  padding: 10px;
+}
 #assessmentTitle {
   font-size: 24pt;
 }
-.sectionContainer {
+.assessmentSection {
   position: relative;
   border: 2px #cccccc;
   box-shadow: #888888 -3px 3px 5px;
@@ -11,20 +14,14 @@
   margin: 50px;
 }
 
-a#deleteSection {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
 div.assessmentSection > div {
-  margin: 2rem 0px;
+  margin: 2rem 0;
 }
 
 div.sectionText > textarea {
   border: 1px solid #ccc;
   min-width: 90%;
-  margin: 20px 0px 5px 0px;
+  margin: 20px 0 5px 0;
 }
 
 .rubricText {
@@ -33,7 +30,7 @@ div.sectionText > textarea {
   border-style: solid;
   border-color: #cccccc;
 
-  margin: 20px 0px;
+  margin: 20px 0;
   padding: 5px;
   display: block;
   max-width: 100%;

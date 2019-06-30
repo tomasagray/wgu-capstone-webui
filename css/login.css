@@ -7,15 +7,13 @@ p#loginWarning {
   font-size: 10pt;
 }
 form.loginForm {
-  display: grid;
+  text-align: center;
   margin: 25px;
 }
   form.loginForm > input[type="text"],
   form.loginForm > input[type="password"] {
-    display: block;
     border-radius: 20px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
-    min-width: 200px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0;
     background: whitesmoke;
     border: none;
     margin: 15px;
@@ -24,24 +22,52 @@ form.loginForm {
 input[type="checkbox"]#keep {
   margin-left: 25px;
 }
-label.login {
-  font-size: 10pt;
+
+div#loginButtonContainer {
+  display: inherit;
+  justify-items: center;
+  align-items: center;
 }
-label#keepLabel:hover {
-  text-decoration: underline;
-  cursor: pointer;
+img#loginSpinner {
+  display: none;
+  width: 64px;
+  height: 64px;
 }
+
 p#errorText {
   text-align: center;
   padding: 15px 10px;
   margin-top: 45px;
   border-radius: 10px;
-  width: 0px;
-  white-space: nowrap;
+  width: 0;
 
   color: whitesmoke;
   font-size: 10pt;
   font-style: italic;
 }
 
+input[type="text"].disabled,
+input[type="password"].disabled {
+  color: #999999;
+  font-style: italic;
+  opacity: 0.3;
+}
 
+button#loginButton {
+  border-radius: 20px;
+  background-color: #2d57a2;
+  border: none;
+  padding: 15px 55px;
+  box-shadow: none;
+
+  color: white;
+  font-size: 14pt;
+  font-weight: bolder;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+  button#loginButton {
+    cursor: pointer;
+    background: rgb(142,170,219);
+  }

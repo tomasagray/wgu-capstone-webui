@@ -1,55 +1,103 @@
 <div ng-controller="editCourseCtrl" id="courseContainer">
-  <h1>{{ course.title }}</h1>
+  <h1 ng-if="edit_mode == false">Create new course</h1>
+  <h1 ng-if="edit_mode == true">Edit course</h1>
+  <h2 style="margin-left: 2em;">
+    ID:
+    <span class="immutable"> {{ course.course_id}} </span>
+  </h2>
 
-  <div id="courseNumberContainer">
-    <label for="courseNumber" style="display: block;">Course Number:</label>
-<!--    <select name="prefix" id="prefix">
-      <option></option>
-      <option id="addPrefixButton">Add...</option>
-    </select>-->
-    <input name="courseNumber" type="text" id="courseNumber" placeholder="xxx"  ng-model="course.courseNumber"/>
-  </div>
-
-  <div>
-    <label for="creditSlider">Credits:</label>
-    <p id="creditOutput" ng-bind="course.credits"></p>
-
-    <div id="creditSlider"></div>
-  </div>
-
-  <h2>Assessments:</h2>
-
-  <div id="assessmentList">
-    <ul id="assessments" class="tileList">
-      <li class="assessmentTile">
-        <h3 class="tileTitle">Assessment Title</h3>
-        <p class="tileText">Assessment text.</p>
+  <div class="subSection">
+    <h2 class="subHeading">Course data</h2>
+    <ul class="niceList">
+      <li></li>
+      <li>
+        <h3>Course title:</h3>
+      </li>
+      <li>
+        <input type="text" name="courseTitle" id="courseTitle" ng-model="course.title" placeholder="Enter course title..."/>
+      </li>
+      <li>
+          <h3>Course Number:</h3>
+      </li>
+      <li>
+          <input name="courseNumber" type="text" id="courseNumber" placeholder="XXX..."  ng-model="course.course_number"/>
+      </li>
+      <li>
+        <h3>Credits:</h3>
+      </li>
+      <li>
+        <p id="creditOutput" ng-bind="course.credits"></p>
+        <input type="range" id="creditSlider" name="creditSlider" ng-model="course.credits" ng-init="course.credits = 3" min="3" max="6"/>
+      </li>
       </li>
     </ul>
+  </div>
 
-    <a href="#!add_assessment" class="button add">Add...</a>
+  <div id="mentorContainer" class="subSection">
+    <h2 class="subHeading">
+      Mentor
+      <button class="editButton" ng-click="handleEditMentor()">
+        Edit
+        <img src="img/edit.svg" alt="Edit mentor" />
+      </button>
+    </h2>
+    <ul class="niceList" ng-if="course.mentor_id != null">
+      <li>Name: <span>{{course.mentor_name}}</span></li>
+      <li>Email: <a href="mailto:{{course.mentor_email}}">{{course.mentor_email}}</a></li>
+      <li>Phone: <span>{{course.mentor_phone | phoneFormat }}</span></li>
+    </ul>
+    <div ng-if="course.mentor_id == null">
+      <p class="centeredText">No mentor assigned to this course.</p>
+    </div>
+
+  </div>
+
+  <div class="subSection">
+    <h2 class="subHeading">
+      Assessments:
+      <button class="smallAddButton" ng-click="handleAddAssessment()" ng-if="edit_mode == true">+</button>
+    </h2>
+
+    <p ng-if="edit_mode == false" class="centeredText">
+      You must create a course before you may add assessments to it. <br/>
+      <span class="immutable">Note: This will be changed in future versions.</span>
+    </p>
+
+    <div>
+      <ul id="assessmentList" class="tileList" ng-repeat="x in assessments">
+        <li>
+          <span ng-click="handleRemoveAssessment(x.assessment_id)" class="delete_row">x</span>
+          <div class="tile" ng-click="handleAssessmentClick(x)">
+            <h3 class="tileTitle">{{x.title}}</h3>
+            <p class="tileText">{{x.type | uppercase }}</p>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!--  Save button  -->
+  <div style="text-align: center; margin: 2em;">
+    <button ng-click="handleSubmitCourse()" class="saveButton">
+      Save
+      <img src="img/save.svg" alt="Save" />
+    </button>
+  </div>
+
+
+  <div id="confirmModal"></div>
+
+  <div id="mentorListModal" style="display: none;">
+    <ul class="niceList active">
+      <li ng-repeat="m in mentors track by $index" ng-click="handleSetMentor($index)">
+        <input
+          type="radio"
+          name="mentor"
+          ng-model="$parent.dlg_mentor"
+          ng-value="m" />
+        {{ m.first_name }} {{ m.last_name }}
+      </li>
+    </ul>
   </div>
 </div>
-
-
-<script>
-  $(document).ready(function() {
-    // Setup UI elements
-
-
-    // Course prefix
-    $("#prefix").selectmenu();
-
-    // Credits slider
-    const $creditMap = [3,4,5,6];
-    let $credits = 0;
-    $("#creditSlider").slider({
-      max: $creditMap.length -1,
-      slide: function (event, ui) {
-        $credits = $creditMap[ui.value];
-        $("#creditOutput").text( $credits );
-        console.log("Credits: " + $credits);
-      }
-    });
-  })
-</script>

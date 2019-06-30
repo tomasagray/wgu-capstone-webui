@@ -1,23 +1,53 @@
-<table id="students" ng-app="uhnApp" ng-controller="studentsCtrl">
-  <thead>
+<div ng-app="uhnApp" ng-controller="studentsCtrl">
+  <table id="students" class="niceList" ng-if="students != null">
+    <thead>
     <tr>
-      <th>Student ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th>&nbsp;</th>
+      <th>Name</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Address</th>
+      <th>&nbsp;</th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
-    <tr class="data-row" ng-repeat="x in students" ng-click="showStudentData(x.student_id)">
-      <td>{{ x.student_id }}</td>
-      <td>{{ x.first_name }}</td>
-      <td>{{ x.last_name }}</td>
+    <tbody>
+    <tr class="data-row" ng-repeat="x in students" ng-click="showStudentData(x.user_id)">
+      <td>
+        <img ng-src="{{x.image_uri}}" alt="User avatar" width="32" ng-if="x.image_uri != null" class="avatar"/>
+      </td>
+      <td>{{ x.first_name }} {{ x.last_name }}</td>
       <td>{{ x.email }}</td>
-      <td>{{ x.phone }}</td>
-      <td>{{ x.address }}</td>
+      <td>{{ x.phone | phoneFormat }}</td>
+      <td>
+        <p class="address">
+          {{x.building_number}} {{x.street}}<br/>
+          <span ng-if="x.unit_number != ''" ng-model="x.unit_number"></span>
+          {{x.city}} {{x.state}} {{x.post_code}}
+        </p>
+      </td>
+      <td style="text-align: center;">
+        <span ng-click="handleRemoveStudent(x);$event.stopPropagation();" class="delete_row">x</span>
+      </td>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+  <p ng-if="students == null" class="centeredText">
+    There are currently no students enrolled in the university.<br/>
+    Use the "+" button below to enroll a random student.
+  </p>
+
+  <div class="addButton" ng-click="handleAddStudent()">
+    +
+  </div>
+
+  <!-- Confirm expel modal -->
+  <div id="confirmExpelModal" style="display: none;">
+    <p>
+      Are you sure you want to <strong>permanently expel
+      <span style="color: #2d57a2;"> {{ expelledName }}</span></strong>
+      from the University of Hardt-Knox?
+    </p>
+  </div>
+</div>

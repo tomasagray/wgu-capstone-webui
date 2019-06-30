@@ -1,0 +1,33 @@
+form#documentUpload > input[type="text"],
+form#documentUpload > textarea {
+  width: 100%;
+  margin: .3em 0;
+  padding: 10px;
+}
+form#documentUpload label {
+  font-weight: bolder;
+}
+
+.inputFile {
+  width: 0.1px; /* setting to 0 throws off tab order in some browsers */
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputFile + label {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: white;
+  background-color: #1f3864;
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+.inputFile:focus + label,
+.inputFile + label:hover {
+  background-color: #2a6495;
+  cursor: pointer;
+}

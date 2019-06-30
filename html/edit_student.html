@@ -1,0 +1,81 @@
+<div ng-controller="editStudentCtrl">
+  <div style="display: inline-block;">
+    <!--  If there is a user avatar image  -->
+    <img ng-src="{{student.image_uri}}" alt="User avatar" ng-if="student.image_uri != null" class="avatar userDetailImage"/>
+    <!--  If there is NO avatar image  -->
+    <img ng-src="img/user.png" alt="User avatar" ng-if="student.image_uri == null" class="avatar userDetailImage"/>
+
+    <div id="studentData" class="userDataList">
+      <div class="userHeader">
+        <h1> {{ student.first_name }} {{ student.last_name }}</h1>
+      </div>
+
+      <ul>
+        <li>
+          <span class="userDataLabel">User ID:</span>
+          <i>{{ student.user_id }}</i>
+        </li>
+        <li>
+          <span class="userDataLabel">Email:</span>
+          {{ student.email }}
+        </li>
+        <li>
+          <span class="userDataLabel">Phone: </span>
+          {{ student.phone | phoneFormat }}
+        </li>
+        <li>
+          <span class="userDataLabel" style="display: inline-block; vertical-align: top;">Address:</span>
+          <div style="display: inline-block;">
+            {{ student.building_number }} {{ student.street }} {{ student.unit_number }} <br/>
+            {{ student.city }} {{ student.state }} {{student.post_code }}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="termContainer" style="clear:both;">
+    <h2 class="subHeading">
+      Terms
+      <button ng-click="handleAddTerm()" class="smallAddButton">+</button>
+    </h2>
+
+    <div id="termList">
+      <table class="niceList" ng-if="terms != null">
+        <thead>
+        <tr>
+          <th>Term ID</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Un-enroll</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="t in terms">
+          <td>
+            <a ng-href="#!/add_edit_term" ng-click="handleEditTerm(t.term_id)">{{ t.term_id }}</a>
+          </td>
+          <td>{{ t.start_date | usDateFormat }}</td>
+          <td>{{ t.end_date | usDateFormat }}</td>
+          <td style="text-align: center;">
+            <span ng-click="handleDeleteTerm(t.term_id)" class="delete_row">x</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p class="centeredText" ng-if="terms == null">
+        This student is not yet enrolled in any terms.
+      </p>
+    </div>
+  </div>
+  <!-- Confirm modal -->
+  <div id="confirmModal" style="display: none;">
+    <p>
+      Are you sure you want to
+      <span style="font-weight: bold;"> un-enroll {{student.first_name}}</span> from the term?
+    </p>
+  </div>
+</div>
+

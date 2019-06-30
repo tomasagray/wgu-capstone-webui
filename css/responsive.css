@@ -1,0 +1,24 @@
+/*
+ * Mobile and small screen compatibility
+ *
+ */
+
+@media screen and (max-width: 900px) {
+  /* Hide elements for hamburger menu */
+  nav#menuBar,
+  h2#dashTitle,
+  nav#menuBar {
+    display: none !important;
+  }
+
+  /* Eliminate extra margin for main content */
+  div#uiContainer {
+    margin-left: 0 !important;
+  }
+
+  /* Change table displays to stack */
+  table.niceList td,
+  table.niceList th {
+    display: block;
+  }
+}

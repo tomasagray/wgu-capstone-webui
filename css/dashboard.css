@@ -1,95 +1,175 @@
 /* Dashboard UI styles */
+img.avatar {
+  border-radius: 50%;
+}
+/* Main UI components */
 
 /* Top bar */
-div#topBar {
-  display: none; /* default: hidden */
+/* -----------------------------------------------------------------*/
+header#topBar {
+  background-color: #1f3864;
+  height: 5em;
   width: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 0;
 }
-div#userContainer {
+h2#dashTitle {
+  font-family: "Bebas Neue", "Arial Black", sans-serif;
+  display: inline-block;
+  font-size: 36pt;
+  letter-spacing: 3pt;
+
+  font-weight: bolder;
+  color: whitesmoke;
+  margin: 0 15px;
+}
+
+div#logoutButton {
   float: right;
-  margin-right: 35px;
-} div#userContainer:hover {
-    cursor: pointer;
-  }
-img#userImage {
-  max-width: 64px;
-  max-height: 64px;
+  width: 3.5em;
+  height: 4em;
+  padding: .5em;
+  margin-right: 1.5em;
+
+  display: flex;
+  justify-content: center;
 }
+  div#logoutButton:hover {
+    cursor: pointer;
+    background-color: #2d57a2;
+  }
+  div#logoutButton > img {
+    width: 2.5em;
+  }
 
 /* Side bar */
+/*-------------------------------------------------------------*/
 nav#menuBar {
-  float: left;
   width: 20%;
-  border: 1px solid #aaa;
-  background-color: #ccc;
-  position: fixed;
+  /*border: 1px solid #aaa;*/
+  background-color: #29487f;
   height: 100%;
+  position: fixed;
 }
-div#schoolDataContainer {
+
+ul#mainMenu {
+  list-style: none;
+  padding: 0;
+}
+#mainMenu li {
+  padding: 15px;
+  font-weight: 500;
+  font-size: 1.15em;
+  display: block;
+  color: whitesmoke;
+  letter-spacing: 1pt;
+}
+#mainMenu li:hover {
+  background-color: #2d57a2;
+  box-shadow: rgba(60, 64, 67, 0.3) 0 -1px 2px 0;
+  cursor: pointer;
+}
+#mainMenu li.selected {
+  background-color: #e8eaed;
+  color: #1f3864;
+  font-weight: bolder;
+  border: 1px solid #0b0b48;
+  box-shadow: rgba(60, 64, 67, 0.3) 0 -1px 2px 0;
+}
+img.menu_icon {
+  max-width: 24px;
+  max-height: 24px;
+  margin-right: 15px;
+}
+
+
+/* Content area */
+/* ---------------------------------------------------------------*/
+div#uiContainer {
+  margin-top: 5em; /* for top bar */
+  /*margin-left: 20%;*/ /* for side nav */
+}
+
+div.page {
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0;
   padding: 25px;
-  margin:20px 0px;
-}
-  #schoolDataContainer > * {
-    margin: 15px;
-  }
-  img#schoolLogo {
-    max-width: 5rem;
-  }
-  div#schoolData > * {
-    margin: 0;
-  }
-  a#editSchool {
-    text-orientation: sideways;
-    text-transform: uppercase;
-    color: white;
-    background-color: rgb(142,170,219);
-    padding: 10px;
+  margin: 3em;
 
-  }
-  ul#mainMenu {
-    list-style: none;
-    padding: 0;
-  }
-    #mainMenu li {
-      padding: 15px;
-      font-weight: bold;
-      display: block;
-      color: #222222;
-    } #mainMenu li:hover {
-        background-color: #eee;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px -1px 2px 0px;
-        cursor: pointer;
-      }
-      #mainMenu li.selected {
-        background-color: #efefef;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px -1px 2px 0px;
-      }
-      img.menu_icon {
-        max-width: 24px;
-        max-height: 24px;
-      }
+  position: relative;
+  top: 2em;
+}
 
-div.listContainer {
-  border: none;
+div.subSection {
+  margin: 0 1.5em 5em;
 }
-table.dataTable {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 25px 0px;
+
+h2.subHeading {
+  background-color: #2d57a2;
+  padding: .8em;
+  color: whitesmoke;
+  font-size: 18pt;
 }
-  table.dataTable tr:nth-child(even) {
-    background-color: #cccccc;
-  }
-  table.dataTable tr:hover {
+
+
+input[type="text"].editableTitle {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: black;
+  padding: 5px;
+
+  display: block;
+  min-width: 90%;
+
+  font-size: 18pt;
+}
+
+ul.tileList {
+  list-style: none;
+  padding: 0;
+  margin-left: 2em;
+  max-width: 60%;
+}
+.tile {
+  display: block;
+  padding: 10px;
+  margin: 20px 0;
+
+  border-width: 0 0 0 20px;
+  border-style: solid;
+  border-left-color: #1f3864;
+  box-shadow: #888888 -1px 1px 2px;
+}
+  .tile:hover {
     cursor: pointer;
-    background-color: #888888;
   }
-  table.dataTable td {
-    padding: 10px;
+
+h3.tileTitle {
+  margin: 5px 0;
+}
+p.tileText {
+  margin-left: 1em;
+  color: #888888;
+  font-style: italic;
+}
+
+
+ul.niceList{
+  list-style: none;
+  margin: 0;
+}
+  ul.niceList li {
+    padding: 15px;
   }
-  table.dataTable td:nth-child(even) {
-    background-color: rgba(142,170,219,0.3);
+  ul.niceList.active li:hover {
+    cursor: pointer;
+    background-color: #b3d4fc;
   }
+  ul.niceList li:nth-child(even) {
+    background-color: #e8eaed;
+  }
+
 
 a.add {
   font-size: 12pt;
@@ -97,53 +177,293 @@ a.add {
 }
 
 /* Tables */
+/*--------------------------------------------------------*/
 table {
   border-collapse: collapse;
+  width: 100%;
 }
 th {
-  text-align: left;
+  text-align: center;
 }
+table.niceList th {
+  text-align: center;
+  color: #1f3864;
+  font-size: 12pt;
+  /* font-weight: 800; */
+  letter-spacing: 2pt;
+  border-bottom: 8px solid whitesmoke;
+  padding: 15px;
+}
+table.niceList > tbody > tr:hover {
+  background-color: #b3d4fc !important;
+}
+table.niceList tr > td {
+  padding: 15px;
+}
+table.niceList tr:nth-child(even) {
+  background-color: #e8eaed;
+}
+table.niceList td:nth-child(even) {
+  background-color: rgba(240,240,240,0.4);
+}
+
 tr.data-row {
   width: 100% !important;
   display: table-row;
 }
-  tr.data-row td {
-    padding: 15px;
-    color: #666;
-    border-bottom:  1px solid #f2f2f2;
-  }
-  tr.data-row:hover {
-    background-color: #b3d4fc;
-    cursor: pointer;
-  }
-/* Media queries - device specific styles */
-/*
-@media only screen and (min-width: 960px) {
-  div#userContainer {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-
-    background-color: white;
-    padding: 20px;
-  } div#userContainer:hover {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
-    cursor: pointer;
-  }
+tr.data-row td {
+  padding: 15px;
+  color: #666;
+  border-bottom:  1px solid #f2f2f2;
+  border-left: 1px solid #efefef;
 }
-*/
-/*
-@media only screen and (min-width: 960px) {
-  div#userContainer {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+tr.data-row td:first-child {
+  border-left: 0;
+}
+tr.data-row:hover {
+  background-color: #b3d4fc !important;
+  cursor: pointer !important;
+}
+tr.data-row:last-child td {
+  border-bottom: 0;
+}
 
-    background-color: white;
-    padding: 20px;
-  } div#userContainer:hover {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+.delete_row {
+  font-weight: bolder;
+  font-size: 12pt;
+  color: red;
+  text-align: center;
+  padding: 3px;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.delete_row:hover {
+  cursor: pointer;
+  color: white;
+  background-color: red;
+}
+
+
+/* jQuery UI overrides */
+/* ---------------------------------------------------- */
+.ui-widget-overlay {
+  background-color: black;
+  opacity: 0.5;
+}
+.ui-dialog {
+  box-shadow: 1px 2px 8px 1px #121212;
+  background-color: white;
+}
+.ui-dialog .ui-dialog-titlebar {
+  padding: .4em 1em;
+  position: relative;
+  background-color: white;
+  border: none;
+  font-size: 3em;
+  font-family: 'Bebas Neue', Roboto, sans-serif;
+  color: #1f3864;
+}
+.ui-dialog .ui-dialog-content {
+  position: relative;
+  border: 0;
+  padding: .5em 3em;
+  background: none;
+  overflow: auto;
+  font-family: 'Quicksand', Roboto, sans-serif;
+}
+button.ui-button.ui-corner-all.ui-widget:first-child {
+  background-color: #2d57a2;
+  color: white;
+  font-weight: 600;
+}
+
+
+/* Special GUI elements */
+/*---------------------------------------------------*/
+div.addButton {
+  position: fixed;
+  bottom: 2em;
+  right: 3em;
+
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-box-shadow: 0 2px 3px 2px #888888;
+  -moz-box-shadow: 0 2px 3px 2px #888888;
+  box-shadow: 0 2px 3px 2px #888888;
+  background-color: hotpink;
+  width: 64px;
+
+  color: whitesmoke;
+  font-weight: 900;
+  font-size: 36pt;
+  text-align: center;
+}
+  div.addButton:hover {
+    cursor: pointer;
+    background-color: deeppink;
+  }
+
+button.smallAddButton {
+  float: right;
+  color: white;
+  font-weight: bolder;
+  font-size: 24pt;
+  border-radius: 100%;
+  background-color: limegreen;
+  border: 0;
+  width: 38px;
+  /* height: 42px; */
+}
+  button.smallAddButton:hover {
     cursor: pointer;
   }
+
+button.saveButton {
+  background-color: hotpink;
+  padding: .4em 1.5em;
+  border-radius: 25px;
+  border: 0;
+  font-size: 18pt;
+  font-weight: bolder;
+  color: whitesmoke;
 }
-*/
+  button.saveButton:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 3px  #888;
+  }
+  button.saveButton img {
+    width: 24px;
+    float: left;
+    margin-right: 15px;
+  }
+
+button.editButton {
+  float: right;
+  display: flex;
+  color: whitesmoke;
+  background-color: transparent;
+  border: 0;
+}
+  button.editButton:hover {
+    cursor: pointer;
+    background-color: rgba(255,255,255,.2);
+  }
+  button.editButton > img {
+    width: 24px;
+    margin-left: .5em;
+  }
+
+/* Range slider */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 50%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+
+input[type=range]::-moz-range-track {
+  width: 50%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 50%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+div#toastContainer {
+  /*display: none;*/
+  opacity: 0;
+  position: fixed;
+  top: 65%;
+  left: 50%;
+  margin: 0 auto;
+
+  border-radius: 25px;
+  padding: 20px;
+  background-color: #ff0000;
+  color: white;
+  font-style: italic;
+  font-size: 14pt;
+}
+
+div#logoutConfirmModal {
+  display: none;
+}
+
+span.immutable {
+  color: #888888;
+  font-style: italic;
+}

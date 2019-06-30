@@ -1,0 +1,24 @@
+/* User related styles */
+/* ---------------------------------------------- */
+img.userDetailImage {
+  width: 128px;
+  float: left;
+  margin: 24px;
+}
+
+div.userDataList {
+  float: right;
+}
+div.userDataList ul {
+  padding: 0;
+  list-style: none;
+}
+div.userDataList ul > li {
+  padding: 10px;
+}
+div.userDataList ul > li:nth-child(even) {
+  background-color: rgba(240,240,240, 0.4);
+}
+.userDataLabel {
+  font-weight: bold;
+}

@@ -1,0 +1,111 @@
+<div id="addEditTermModal" ng-controller="addEditTermCtrl">
+  <h2>
+    Term ID: <span class="immutable">{{term.term_id}}</span>
+  </h2>
+  <form id="termData">
+    <div class="subSection">
+      <h2 class="subHeading">Term dates</h2>
+      <ul class="niceList">
+        <li>
+          <label for="termStartDate">Start Date: </label>
+          <input type="text" id="termStartDate" name="termStartDate" ng-value="term.start_date | usDateFormat"  ng-model="term.start_date"/>
+        </li>
+        <li>
+          <label for="termEndDate">End Date:</label>
+          <input type="text" id="termEndDate" name="termEndDate" ng-value="term.end_date | usDateFormat" ng-model="term.end_date" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="subSection">
+      <h2 class="subHeading">
+        Courses
+        <button type="button" ng-click="handleAddCourse()" class="smallAddButton">+</button>
+      </h2>
+
+      <table id="termCourses" class="niceList" ng-if="term.courses.length != 0">
+        <thead>
+        <tr>
+          <th>Course No.</th>
+          <th>Title</th>
+          <th>Credits</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Remove</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="c in term.courses track by $index">
+          <td>{{ c.course_number }}</td>
+          <td>{{ c.title }}</td>
+          <td>{{ c.credits }}</td>
+          <td>{{ c.start_date | usDateFormat }}</td>
+          <td>{{ c.end_date | usDateFormat }}</td>
+          <td>{{ c.course_status }}</td>
+          <td style="text-align: center">
+            <span ng-click="handleRemoveCourse($index)" class="delete_row">x</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p class="centeredText" ng-if="term.courses.length == 0">
+        There are currently no courses associated with this term.
+      </p>
+    </div>
+  </form>
+
+  <div style="text-align: center; margin: 2em;">
+    <button ng-click="handleSubmitTerm()" class="saveButton">
+      Save
+      <img src="img/save.svg" alt="Save" />
+    </button>
+  </div>
+
+
+  <!-- Add course modal -->
+  <div id="addCourseModal" style="display: none;">
+    <h3>Select course:</h3>
+    <select ng-init="selectedCourse = courses[0]"
+            ng-model="selectedCourse"
+            ng-options="x.title for x in courses">
+<!--      <option ng-repeat="course in courses track by ($index+':'+course)" value="{{course.course_id}}">-->
+<!--        {{course.course_number}} - {{course.title}}-->
+<!--      </option>-->
+    </select> <br/>
+
+    <label for="termCourseStart">Start:</label>
+    <input type="text" id="termCourseStart" name="termCourseStart" ng-model="courseStart" />
+
+    <label for="termCourseEnd">End:</label>
+    <input type="text" id="termCourseEnd" name="termCourseEnd" ng-model="courseEnd" />
+
+    <label for="course_status">Status:</label>
+    <select id="course_status" ng-model="courseStatus">
+      <option value="dropped" selected="">Dropped</option>
+      <option value="in_progress">In Progress</option>
+      <option value="completed">Completed</option>
+      <option value="planned">Planned</option>
+    </select>
+  </div>
+</div>
+
+<!-- Confirm modal -->
+<div id="confirmModal" style="display: none;">
+  <p>
+    Are you sure you want to remove the course from the term?
+  </p>
+</div>
+
+
+<script>
+  // Setup date pickers
+  $(function () {
+    $("#termStartDate").datepicker();
+    $("#termEndDate").datepicker();
+    $("#termCourseStart").datepicker();
+    $("#termCourseEnd").datepicker();
+  });
+</script>

@@ -1,0 +1,51 @@
+<div ng-controller="editFacultyCtrl">
+  <div style="display: inline-block;">
+    <!--  If there is a user avatar image  -->
+    <img ng-src="{{faculty.image_uri}}" alt="User avatar" ng-if="faculty.image_uri != null" class="avatar userDetailImage"/>
+    <!--  If there is NO avatar image  -->
+    <img ng-src="img/user.png" alt="User avatar" ng-if="faculty.image_uri == null" class="avatar userDetailImage"/>
+
+    <div id="facultyData" class="userDataList">
+      <div class="userHeader">
+        <h1> {{ faculty.first_name }} {{ faculty.last_name }}</h1>
+      </div>
+
+      <ul>
+        <li>
+          <span class="userDataLabel">User ID:</span>
+          <i>{{ faculty.user_id }}</i>
+        </li>
+        <li>
+          <span class="userDataLabel">Email:</span>
+          {{ faculty.email }}
+        </li>
+        <li>
+          <span class="userDataLabel">Phone: </span>
+          {{ faculty.phone | phoneFormat }}
+        </li>
+        <li>
+          <span class="userDataLabel" style="display: inline-block; vertical-align: top;">Address:</span>
+          <div style="display: inline-block;">
+            {{ faculty.building_number }} {{ faculty.street }} {{ faculty.unit_number }} <br/>
+            {{ faculty.city }} {{ faculty.state }} {{faculty.post_code }}
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div id="courseList" class="subSection">
+    <h2 class="subHeading">Course mentorships</h2>
+    <p class="centeredText" ng-if="faculty_courses == undefined">
+      This faculty member is not currently assigned to any mentorships.
+    </p>
+
+    <ul class="tileList" style="max-width: 60%; margin-left: 2em;">
+      <li class="tile" ng-repeat="x in faculty_courses">
+        <h3 class="tileTitle">{{x.course_number}} - {{x.title}}</h3>
+        <p class="tileText">{{x.credits}} credits</p>
+      </li>
+    </ul>
+  </div>
+</div>
